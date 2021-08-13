@@ -1,0 +1,202 @@
+AntiDeAMX2()
+{
+    new a[][] =
+    {
+        "Unarmed (Fist)",
+        "Brass K"
+    };
+    #pragma unused a
+}
+
+#include <streamer>
+//#include <sscanf2>
+#include <a_npc>
+//#include <MidoStream>
+#include <core>
+//#include <reallife>
+#include <float>
+#include <time>
+#include <mxINI.inc>
+#include <dini>
+#include <file>
+#include <rich>
+#include <morphinc>
+#include <inc>
+#include <mxdate>
+#include <crp>
+//#include <vehicle_fun>
+#include <a_samp>
+#include <mysql>
+#include <strlib>
+#include <progress>
+#include <a_http>
+#include <FloodControl>
+#include <foreach>
+#include <TimestampToDate>
+#include <YSI\y_hooks>
+
+
+
+
+
+#include "./includes/core/defines.pwn" //defines
+#include "./includes/core/variables.pwn" //variables
+main() {
+	printr(" ");
+	printr(" ");
+	printr("TW");
+	printr("_____________________");
+
+}
+#include "./includes/core/functions.pwn" //functions
+#include "./includes/zombie.pwn" //зомби
+#include "./includes/cars/carTuning.pwn" //тининг
+#include "./includes/core/other.pwn" //functions
+#include "./includes/player/public.pwn" //functions
+#include "./includes/core/aimbot.pwn" //AimBot Anticheat
+#include "./includes/player/onPlayerConnect.pwn"
+#include "./includes/core/dialogs.pwn"
+#include "./includes/core/public.pwn" 
+#include "./includes/core/commands.pwn" 
+#include "./includes/player/OnPlayerKeyStateChange.pwn"
+#include "./includes/mapping/ufo.pwn" //функции создания и движения нло
+#include "./includes/mapping/boards.pwn" //надписи
+#include "./includes/cars/public.pwn" //паблики авто + спидометр, который дофига чего считает в тачках
+#include "./includes/player/playerHUD.pwn"
+#include "./includes/core/admin.pwn" //админские штучки
+#include "./includes/player/damage.pwn" 
+#include "./includes/player/inventory.pwn"
+#include "./includes/loot/functions.pwn"
+#include "./includes/player/funtions.pwn"
+#include "./includes/raceTrack.pwn"
+#include "./includes/mapping/snowObjects.pwn"
+#include "./includes/cars/donateCarsPrice.pwn" //цена на донат авто
+#include "./includes/otherStuff.pwn"
+#include "./includes/donate.pwn"
+#include "./includes/clans.pwn"
+
+
+#include "./includes/main/bunkerGoverment.pwn" //подземный бункер с подводной лодкой
+#include "./includes/main/fuelFactory.pwn" //нефтезавод
+#include "./includes/islandWithFort.pwn" //какой-то остров
+#include "./includes/player/objectEditor.pwn" //иоздание и редактирование объектов игроком за чатлы
+#include "./includes/cars/extraTuning.pwn" //дополнительный тюнинг авто (доп объекты)
+#include "./includes/cars/functions.pwn" //загрузка/перезагрузка/сохраниение данных авто и еще всякие функции для тачек
+#include "./includes/loot/createAndInterrors.pwn" //спаун лута и вход в интерьеры с лутом
+
+#include "./includes/core/timers/otherTimer.pwn" //таймер OtherTimer (500мс)
+/* Таймер Fresh() (1 с)
+ * Первоночальный спаун зомби
+ * Спаун чернухи
+ * Античит на быстрое перемещение в авто
+ * Автопарковка прицепа транспорта
+ * Раход топлива при заведенном авто и когда игрока нет в авто
+ * Автозапуск сохранений в бд/payday/создание лута и тд
+ * Изменение погоды
+ * Рестарт
+ * Кик игрока с задержкой
+ * Античит - VW
+ * Скилы на макс при использовании кокаина
+ * playerNoMoveCounter - для начисления Exp
+ * Спутник - следование за игроком
+ * Античит - слишком шустрый! 1sec Checker!
+ * Туториал
+ * Респаун после "Я застрял"
+ * Открытие кейса с опытом
+ * Ачивки за время выживания
+ * Текстравы времени, времени выживания
+ * UpdatePlayerProgressBar для здоровья и брони
+ * Маркер "Жажды крови"
+ * Маркер ближайшего врага от попугая
+ * Маркер ближайшей жертвы для зараженного
+ * "Вам включили чат. Пожалуйста больше не нарушайте правила"
+ * Кик при высоком пинге
+ * NPC Грузовики с лутом (старт)
+ * Убираем территории при неактивности игроков клана, по одной
+ * Авто рестарт
+ */
+#include "./includes/core/timers/fresh.pwn" //таймер Fresh (1 с)
+
+/* Таймер CountEx() (5 с)
+ * Проверка на "Залогинен ли игрок"
+ * Event1 - спаун, победитель, отмена
+ * Проверка на PASSENGER WITHOUT DRIVER
+ * Проверка на RemoveFromVehicle
+ * AFK
+ * Голодные игры - спаун, победитель, отмена
+ */
+#include "./includes/core/timers/countEx.pwn" //таймер CountEx (5 с)
+
+/* Таймер HPCheck (15 с)
+ * Респаун Буллетов на гоночной трассе
+ * SendDeathMessage - скролл
+ * GangZoneFlashForAll - zone[zoneIdIsUnderAttack]
+ * GangZoneShowForAll - BonusBoxZone
+ * Лечение от НЛО
+ * Маркер игрока с кейсом
+ * "Зараженным запрещено находиться на атакуемой территории!"
+ * Работа защитного костюма
+ * Работа попугая
+ * Голод
+ * Жажда
+ * Отпускаем из jail
+ * Античит на здоровье и броню
+ * Туман
+ * Дождь
+ * Недостаток кислорода
+ */
+#include "./includes/core/timers/hpCheck.pwn" //таймер HPCheck (15 с)
+
+/* Таймер SyncUp (60 с)
+ * NPC квестовые переподключение
+ * NPC зомби переподключение
+ * Окончание войны за территорию
+ * Респаун деревьев
+ * Движение последнего выжевшего
+ * Движение аномалии
+ * Движение подводной лодки
+ * Движение оленей
+ * Движение черепах
+ * Убирание костров
+ * Ядерный взрыв
+ * Взрыв взрывчаток
+ * Выбор цели для зомби при zombieKillEmAll
+ * Скайнет
+ * Запуск сохрания данных по расписанию
+ * Обработка данных нефтяных вышек
+ * Выработка бензина в кланах
+ */
+#include "./includes/core/timers/syncUp.pwn" //таймер SyncUp (60 с)
+
+/* Таймер ReklamaTimer (300 с)
+ * Проростание радиоктивной семечки
+ * Рестарт по запросу
+ * Начисление exp
+ * Проврка скинов
+ * Ломаные мосты, обрушения и все в этом духе.
+ * Заражение вирусом
+ * Выдача кейса с лутом
+ * Спаун гуманитарной помощи
+ * Удаление лишнего лута из домов, кланов и интерьеров
+ * Вызов генерации лута и деревьев
+ * Движение НЛО
+ * Вызов обновления тюнинга авто
+ * Вызов сохрание данных в БД
+ * Тексты-подсказки
+ * Инфо о ремнте домов/кланов/нефтяных вышек для игроков
+ * Уничтожение домов/кланов/нефтяных вышек без хп
+ */
+#include "./includes/core/timers/reklamaTimer.pwn" //таймер ReklamaTimer (300 с)
+
+#include "./includes/core/c-bug.pwn" //Античит на c-bug
+#include "./includes/core/elevator.pwn" //Лифт в ЛС
+
+#include "./includes/core/mysql/functions.pwn" 
+
+
+#include "./includes/player/playerText.pwn"
+#include "./includes/player/playerUpdate.pwn"
+
+
+
+
